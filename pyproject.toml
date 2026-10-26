@@ -9,6 +9,8 @@ description = "Local Windows voice dictation from a global hotkey"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 dependencies = [
+    # faster-whisper passes metadata_errors to av.open, which PyAV 19 removed.
+    "av>=11,<19",
     "faster-whisper>=1.1.1",
     "httpx>=0.27",
     "numpy>=1.26",
