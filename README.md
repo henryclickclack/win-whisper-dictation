@@ -90,7 +90,7 @@ compute_type = "auto"
 beam_size = 5
 
 [openai]
-model = "gpt-4o-transcribe"
+model = "gpt-transcribe"
 base_url = "https://api.openai.com/v1"
 timeout = 120
 

@@ -28,7 +28,7 @@ compute_type = "auto"
 beam_size = 5
 
 [openai]
-model = "gpt-4o-transcribe"
+model = "gpt-transcribe"
 base_url = "https://api.openai.com/v1"
 timeout = 120
 
@@ -67,7 +67,7 @@ class TranscriptionConfig:
 
 @dataclass(frozen=True)
 class OpenAIConfig:
-    model: str = "gpt-4o-transcribe"
+    model: str = "gpt-transcribe"
     base_url: str = "https://api.openai.com/v1"
     timeout: float = 120.0
 
@@ -238,7 +238,7 @@ def load_config(path: Path | None = None) -> AppConfig:
             beam_size=int(transcription.get("beam_size", 5)),
         ),
         openai=OpenAIConfig(
-            model=str(openai.get("model", "gpt-4o-transcribe")),
+            model=str(openai.get("model", "gpt-transcribe")),
             base_url=str(
                 openai.get("base_url", "https://api.openai.com/v1")
             ).rstrip("/"),

@@ -126,7 +126,13 @@ class OpenAITranscriber:
         key = self.require_key()
         data = {"model": self._config.model, "response_format": "json"}
         if self._language:
-            data["language"] = self._language
+            # gpt-transcribe replaces the singular language field with a list.
+            field = (
+                "languages[]"
+                if self._config.model.startswith("gpt-transcribe")
+                else "language"
+            )
+            data[field] = self._language
         with audio_path.open("rb") as audio:
             response = httpx.post(
                 f"{self._config.base_url}/audio/transcriptions",
